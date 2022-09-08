@@ -2,7 +2,7 @@
 
 using namespace std;
 
-int merge(vector<int> arr, int L, int M, int R)
+int merge(vector<int> &arr, int L, int M, int R)
 {
     vector<int> tmp(R - L + 1);
     int i = 0;
@@ -28,7 +28,7 @@ int merge(vector<int> arr, int L, int M, int R)
     return true;
 }
 
-int process(vector<int> arr, int L, int R)
+int process(vector<int> &arr, int L, int R)
 {
     if (L == R)
     {
@@ -56,23 +56,38 @@ int mergeSort(vector<int> &arr)
 
 int main(int argc, char const **argv)
 {
+    //生成随机数组
     int MaxSize = 5;
     int MaxValue = 10000;
-    vector<int> arrTmp = generataRandomArray(MaxSize, MaxValue);
-    myprint(arrTmp);
+    vector<int> vecTmp = generataRandomArray(MaxSize, MaxValue);
+    myprint(vecTmp);
+    vector<int> vec1 = copyArray(vecTmp);
+    vector<int> vec2 = copyArray(vecTmp);
 
+    //系统排序算法
     cout << "math sort algorithm start" << endl;
-    sort(arrTmp.begin(), arrTmp.end(),
+    sort(vec1.begin(), vec1.end(),
          [](int a, int b)
          {
              return a <= b ? true : false;
          });
-
-    myprint(arrTmp);
+    myprint(vec1);
     cout << "math sort algorithm end" << endl;
 
-    mergeSort(arrTmp);
-    myprint(arrTmp);
+    //归并排序实现
+    mergeSort(vec2);
+    myprint(vec2);
+    
+    //测试
+    int tmp = isEqual(vec1, vec2);
+    if (tmp)
+    {
+        cout << "mergeSort is Success" << endl;
+    }
+    else
+    {
+        cout << "mergeSort is Fail" << endl;
+    }
 
     system("pause"); // 防止运行后自动退出，需头文件stdlib.h
     return 0;
