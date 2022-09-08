@@ -67,11 +67,11 @@ int main(int argc, char const **argv)
     int tmp = isEqual(vec1, vec2);
     if (tmp)
     {
-        cout << "bubbleSort is Success" << endl;
+        cout << "insertionSort is Success" << endl;
     }
     else
     {
-        cout << "bubbleSort is Fail" << endl;
+        cout << "insertionSort is Fail" << endl;
     }
 
     system("pause"); // 防止运行后自动退出，需头文件stdlib.h
