@@ -37,9 +37,9 @@ int bubbleSort(vector<int> &vec)
     {
         for (auto j = 0; j < i; j++)
         {
-            if(vec[j] > vec[j+1])
+            if (vec[j] > vec[j + 1])
             {
-                swap(vec[j],vec[j+1]);
+                swap(vec[j], vec[j + 1]);
             }
         }
     }
@@ -48,24 +48,37 @@ int bubbleSort(vector<int> &vec)
 
 int main(int argc, char const **argv)
 {
-    //数组
-    int arr[] = {200, 1, 9, 10, 3, 4, 5};
-    int size = sizeof(arr) / sizeof(arr[0]);
+    //生成随机数组
+    int MaxSize = 5;
+    int MaxValue = 10000;
+    vector<int> vecTmp = generataRandomArray(MaxSize, MaxValue);
+    myprint(vecTmp);
+    vector<int> vec1 = copyArray(vecTmp);
+    vector<int> vec2 = copyArray(vecTmp);
 
-    // vector
-    vector<int> vec;
-    for (size_t i = 0; i < size; i++)
+    //系统排序算法
+    cout << "math sort algorithm start" << endl;
+    sort(vec1.begin(), vec1.end(),
+         [](int a, int b)
+         {
+             return a <= b ? true : false;
+         });
+    myprint(vec1);
+    cout << "math sort algorithm end" << endl;
+
+    //冒泡排序实现
+    bubbleSort(vec2);
+    myprint(vec2);
+
+    int tmp = isEqual(vec1, vec2);
+    if (tmp)
     {
-        vec.push_back(arr[i]);
+        cout << "bubbleSort is Success" << endl;
     }
-
-    bubbleSort(arr, size);
-    myprint(arr, size);
-
-    myprint(vec);
-    bubbleSort(vec);
-    myprint(vec);
-
+    else
+    {
+        cout << "bubbleSort is Fail" << endl;
+    }
 
     system("pause"); // 防止运行后自动退出，需头文件stdlib.h
     return 0;
