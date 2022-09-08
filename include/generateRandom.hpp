@@ -68,14 +68,6 @@ vector<int> generataRandomArray(int maxSize, int maxValue)
     return vecArray;
 }
 
-vector<int> copyArray(vector<int> arr)
-{
-    vector<int> tmp;
-    tmp = arr;
-    
-    return tmp;
-}
-
 /*
 int main(int argc, char const **argv)
 {
