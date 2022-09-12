@@ -4,24 +4,35 @@ using namespace std;
 
 int main(int argc, char const **argv)
 {
-     //生成随机数组
-    int MaxSize = 5;
-    int MaxValue = 10000;
-    vector<int> vecTmp = generataRandomArray(MaxSize, MaxValue);
-    myprint(vecTmp);
-    vector<int> vec1 = copyArray(vecTmp);
-    vector<int> vec2 = copyArray(vecTmp);
+    //随机数测试
+    int maxSize = 5;
+    int maxValue = 1000;
+    int timeSize = 5;
+    srand((unsigned int)time(nullptr)); //产生随机种子
+    for (auto i = 0; i < timeSize; i++)
+    {
+        vector<int> vec = generataRandomArray(maxSize, maxValue);
+        myprint(vec);
+    }
 
-    //系统排序算法
-    cout << "math sort algorithm start" << endl;
-    sort(vec1.begin(), vec1.end(),
-         [](int a, int b)
-         {
-             return a <= b ? true : false;
-         });
-    myprint(vec1);
-    cout << "math sort algorithm end" << endl;
-    
+    //生成随机数组
+    // int MaxSize = 5;
+    // int MaxValue = 10000;
+    // vector<int> vecTmp = generataRandomArray(MaxSize, MaxValue);
+    // myprint(vecTmp);
+    // vector<int> vec1 = copyArray(vecTmp);
+    // vector<int> vec2 = copyArray(vecTmp);
+
+    // //系统排序算法
+    // cout << "math sort algorithm start" << endl;
+    // sort(vec1.begin(), vec1.end(),
+    //      [](int a, int b)
+    //      {
+    //          return a <= b ? true : false;
+    //      });
+    // myprint(vec1);
+    // cout << "math sort algorithm end" << endl;
+
     /*
     //选择排序实现
     selectionSort(vec2);
